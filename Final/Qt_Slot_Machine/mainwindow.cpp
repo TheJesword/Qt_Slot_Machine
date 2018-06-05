@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // -- Initializing all the variables
+    winnings = 0;
     multiplier = 0;
     betNumber = 0;
     leftNumber = 0;
@@ -54,11 +55,13 @@ void MainWindow::randomNumberGenerator()
     middleNumber = rand() % 7 + 1;
 }
 
+
 // updating the ui bet count
 void MainWindow::updateBet()
 {
     ui->betNumberLabel->setText(QString::number(betNumber));
 }
+
 
 // updatting the coins gains or losses
 void MainWindow::updateCoins()
@@ -66,15 +69,19 @@ void MainWindow::updateCoins()
     ui->coinsLabel->setText(QString::number(coins));
 }
 
+
 // adding coins from the winnings
 void MainWindow::addCoins()
 {
-  // winnings = calcWinnings();
-   //qDebug() << "The winnings are " << winnings;
+
+   reelObs.setBet(betNumber);
+   qDebug() << "main: "<< reelObs.getBet();
+   // qDebug() << "Multiplier from MainWindow: " << multiplier;
    // coins = coins + tempNumber;
 }
 
-// display the reels to the ui
+
+// display the reels to the ui and calls a few other functions to keep the screen updated
 void MainWindow::displayReel()
 {
     ui->leftReelLabel->setText(QString(leftReel.getLetter()));
@@ -83,6 +90,7 @@ void MainWindow::displayReel()
     addCoins();
     updateCoins();
 }
+
 
 void MainWindow::on_betButton_clicked()
 {
@@ -101,7 +109,12 @@ void MainWindow::on_betButton_clicked()
             updateCoins();
             updateBet();
             ui->pullErrorLabel->setText("");
-            randomNumberGenerator();
+            //randomNumberGenerator();
+
+            leftNumber = 1;
+            middleNumber = 3;
+            rightNumber = 2;
+
             emit leftReel.getNumber(leftNumber);
             emit middleReel.getNumber(rightNumber);
             emit rightReel.getNumber(middleNumber);

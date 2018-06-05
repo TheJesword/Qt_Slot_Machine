@@ -41,14 +41,15 @@ private:
     Controller rightReel;
     Reel reel;
     ReelObserver reelObs;
+    QVector<int> testing;
 
     // ---- Variables ----
-    unsigned int winnings;
+    int winnings;
     unsigned int leftNumber;
     unsigned int rightNumber;
     unsigned int middleNumber;
     unsigned int betNumber;
-    unsigned int multiplier;
+    int multiplier;
     unsigned int coins;
 };
 

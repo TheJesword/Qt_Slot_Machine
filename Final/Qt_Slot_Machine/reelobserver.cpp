@@ -2,6 +2,7 @@
 
 ReelObserver::ReelObserver()
 {
+    //temp = 2;
 }
 
 ReelObserver::ReelObserver(Reel *model, int leftNumber, int middleNumber, int rightNumber)
@@ -14,14 +15,13 @@ ReelObserver::ReelObserver(Reel *model, int leftNumber, int middleNumber, int ri
 
 void ReelObserver::update(int betNumber)
 {
-   // qDebug() << "Bet Number: " << betNumber;
-   // qDebug() << "Left Number: " << leftNumber;
-   // qDebug() << "Middle Number: " << middleNumber;
-   // qDebug() << "Right Number: " << rightNumber << "\n";
+    qDebug() << "Bet Number: " << betNumber;
+    qDebug() << "Left Number: " << leftNumber;
+    qDebug() << "Middle Number: " << middleNumber;
+    qDebug() << "Right Number: " << rightNumber << "\n";
 
-    // supposed to determine the winnings
+    // determine the Multiplier
 
-    /*
     if(leftNumber == 1 && middleNumber == 1 && rightNumber == 1)
         multiplier = 1;
     else if(leftNumber == 2 && middleNumber == 2 && rightNumber == 2)
@@ -43,11 +43,13 @@ void ReelObserver::update(int betNumber)
     else
         multiplier = 0;
 
+    qDebug() << "multiplier: " << multiplier;
+
     setMult(multiplier);
-    */
+    qDebug() << "getMult" << getMult();
 }
 
-void ReelObserver::setMult(int multiplier)
+void ReelObserver::setMult(int& multiplier)
 {
     this->multiplier = multiplier;
 }
@@ -59,17 +61,12 @@ int ReelObserver::getMult()
 
 void ReelObserver::setBet(int bet)
 {
-    this->bet = bet;
+    this->bet = bet * getMult();
 }
 
 int ReelObserver::getBet()
 {
     return bet;
-}
-
-int ReelObserver::calcWinnings(int bet, int multiplier)
-{
-    return bet * multiplier;
 }
 
 

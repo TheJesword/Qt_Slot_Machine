@@ -67,7 +67,7 @@ public:
 ""));
         middleReelLabel = new QLabel(centralWidget);
         middleReelLabel->setObjectName(QStringLiteral("middleReelLabel"));
-        middleReelLabel->setGeometry(QRect(315, 170, 51, 101));
+        middleReelLabel->setGeometry(QRect(317, 170, 51, 101));
         middleReelLabel->setStyleSheet(QLatin1String("background: transparent;\n"
 "font: \"URW Chancery L\", cursive;\n"
 "font-size: 60px;"));
@@ -79,7 +79,7 @@ public:
 "font-size: 60px;"));
         leftReelLabel = new QLabel(centralWidget);
         leftReelLabel->setObjectName(QStringLiteral("leftReelLabel"));
-        leftReelLabel->setGeometry(QRect(245, 170, 51, 101));
+        leftReelLabel->setGeometry(QRect(243, 170, 51, 101));
         leftReelLabel->setStyleSheet(QLatin1String("background: transparent;\n"
 "font: \"URW Chancery L\", cursive;\n"
 "font-size: 60px;"));
