@@ -9,7 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // -- Initializing all the variables
     winnings = 0;
-    multiplier = 0;
     betNumber = 0;
     leftNumber = 0;
     rightNumber = 0;
@@ -37,12 +36,13 @@ void MainWindow::on_pullButton_clicked()
     }
     else
     {
-        displayReel();
-        ReelObserver reb(&reel, leftNumber, rightNumber, middleNumber);
+        //displayReel();
+        ReelObserver reb(&reel, leftNumber, middleNumber, rightNumber);
         reel.setValue(betNumber);
         betNumber = 0;
         updateBet();
         ui->betErrorLabel->setText("");
+        displayReel();
     }
 }
 
@@ -73,11 +73,8 @@ void MainWindow::updateCoins()
 // adding coins from the winnings
 void MainWindow::addCoins()
 {
-
-   reelObs.setBet(betNumber);
-   qDebug() << "main: "<< reelObs.getBet();
-   // qDebug() << "Multiplier from MainWindow: " << multiplier;
-   // coins = coins + tempNumber;
+   coins = coins + winnings;
+   ui->coinsWonLabel->setText(QString::number(winnings));
 }
 
 
@@ -109,19 +106,36 @@ void MainWindow::on_betButton_clicked()
             updateCoins();
             updateBet();
             ui->pullErrorLabel->setText("");
-            //randomNumberGenerator();
+            randomNumberGenerator();
 
-            leftNumber = 1;
-            middleNumber = 3;
-            rightNumber = 2;
+            if(leftNumber == 1 && middleNumber == 1 && rightNumber == 1)
+                winnings = betNumber * 1;
+            else if(leftNumber == 2 && middleNumber == 2 && rightNumber == 2)
+                winnings = betNumber * 2;
+            else if(leftNumber == 3 && middleNumber == 3 && rightNumber == 3)
+               winnings = betNumber * 3;
+            else if(leftNumber == 4 && middleNumber == 4 && rightNumber == 4)
+                winnings = betNumber * 4;
+            else if(leftNumber == 5 && middleNumber == 5 && rightNumber == 5)
+                winnings = betNumber * 5;
+            else if(leftNumber == 6 && middleNumber == 6 && rightNumber == 6)
+                winnings = betNumber * 6;
+            else if(leftNumber == 7 && middleNumber == 7 && rightNumber == 7)
+                winnings = betNumber * 7;
+            else if(leftNumber == 1 && middleNumber == 2 && rightNumber == 3)
+                winnings = betNumber * 8;
+            else if(leftNumber == 4 && middleNumber == 5 && rightNumber == 6)
+                winnings = betNumber * 9;
+            else
+                winnings = betNumber * 0;
 
             emit leftReel.getNumber(leftNumber);
-            emit middleReel.getNumber(rightNumber);
-            emit rightReel.getNumber(middleNumber);
+            emit middleReel.getNumber(middleNumber);
+            emit rightReel.getNumber(rightNumber);
         }
         else
         {
-            ui->betErrorLabel->setText("Max bet is 3");
+            ui->betErrorLabel->setText("Max bet is 3!");
         }
     }
 }

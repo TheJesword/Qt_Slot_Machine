@@ -237,6 +237,32 @@ font-size: 25px;</string>
      <string>Coins:</string>
     </property>
    </widget>
+   <widget class="QLabel" name="coinsWonLabel">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>85</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>81</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Coins Won:</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

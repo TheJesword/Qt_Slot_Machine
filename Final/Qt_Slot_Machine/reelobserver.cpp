@@ -2,7 +2,7 @@
 
 ReelObserver::ReelObserver()
 {
-    //temp = 2;
+
 }
 
 ReelObserver::ReelObserver(Reel *model, int leftNumber, int middleNumber, int rightNumber)
@@ -15,12 +15,14 @@ ReelObserver::ReelObserver(Reel *model, int leftNumber, int middleNumber, int ri
 
 void ReelObserver::update(int betNumber)
 {
+    /*
     qDebug() << "Bet Number: " << betNumber;
     qDebug() << "Left Number: " << leftNumber;
     qDebug() << "Middle Number: " << middleNumber;
     qDebug() << "Right Number: " << rightNumber << "\n";
 
-    // determine the Multiplier
+    // Supposed to determine the Multiplier/ winnings
+    // Could not figure out how to send the value back to the main
 
     if(leftNumber == 1 && middleNumber == 1 && rightNumber == 1)
         multiplier = 1;
@@ -47,6 +49,7 @@ void ReelObserver::update(int betNumber)
 
     setMult(multiplier);
     qDebug() << "getMult" << getMult();
+    */
 }
 
 void ReelObserver::setMult(int& multiplier)
@@ -59,15 +62,6 @@ int ReelObserver::getMult()
     return multiplier;
 }
 
-void ReelObserver::setBet(int bet)
-{
-    this->bet = bet * getMult();
-}
-
-int ReelObserver::getBet()
-{
-    return bet;
-}
 
 
 
