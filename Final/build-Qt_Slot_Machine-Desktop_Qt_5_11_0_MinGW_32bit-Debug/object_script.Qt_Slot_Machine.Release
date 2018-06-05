@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\reel.o
+./release\controller.o
+./release\observer.o
+./release\reelobserver.o
+./release\winnings.o
+./release\moc_mainwindow.o
+./release\moc_reel.o
+./release\moc_controller.o
+);
